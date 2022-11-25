@@ -4,8 +4,8 @@ export const counterSlice = createSlice({
     name: 'counter',
     initialState: {
         value: 0,
-        yourRace: '',
-        enemyRace: '',
+        yourRace: 'Terran',
+        enemyRace: 'Zerg',
     },
     reducers: {
         increment: (state) => {

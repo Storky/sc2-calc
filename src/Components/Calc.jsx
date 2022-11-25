@@ -3,6 +3,9 @@ import {cardContentClasses} from "@mui/material";
 import RaceView from "Components/Views/RaceView";
 import {useDispatch, useSelector} from "react-redux";
 import {setYourRace, setEnemyRace} from "store/counterSlice";
+import Button from '@mui/material/Button';
+import BasicModal from "Components/BasicModal";
+import UnitListView from "Components/Views/UnitListView";
 
 const Calc = () => {
     const yourRace = useSelector((state) => state.counter.yourRace)
@@ -18,14 +21,21 @@ const Calc = () => {
     }, [dispatch]);
 
 
+    const [open, setOpen] = React.useState(true);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
 
     return (
         <>
+            <Button onClick={handleOpen}>Open modal</Button>
 
-
-            <br/>
-            <div>kkkk</div>
-
+            <BasicModal
+                isOpen={open}
+                onClose={handleClose}
+            >
+                <UnitListView/>
+            </BasicModal>
 
             <h4>Current race = {yourRace}, enemy = {enemyRace}</h4>
             <RaceView
